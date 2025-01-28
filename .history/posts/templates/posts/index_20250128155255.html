@@ -1,0 +1,36 @@
+{% extends 'posts/base.html' %}
+
+{% block content %}
+    <h2>Posts</h2>
+    {% if user.is_authenticated %}
+        <a href="{% url 'post_create' %}">Create New Post</a>
+    {% endif %}
+    
+    <!-- Post Slider -->
+    <div class="post-slider">
+        <button class="prev" onclick="moveSlide(-1)">&#10094;</button>
+        <div class="slider-container">
+            {% for post in posts %}
+                <div class="post-slide">
+                    <h3><a href="{% url 'post_detail' post.pk %}">{{ post.title }}</a></h3>
+                    <p>
+                        {% if post.content|length > 100 %}
+                            {{ post.content|slice:":100" }}... 
+                            <a href="{% url 'post_detail' post.pk %}">Read more</a>
+                        {% else %}
+                            {{ post.content }}
+                        {% endif %}
+                    </p>
+                    <small>By {{ post.author.username }} on {{ post.created_at }}</small>
+                    {% if user.is_authenticated and user == post.author %}
+                        <div>
+                            <a href="{% url 'post_update' post.pk %}">Edit</a>
+                            <a href="{% url 'post_delete' post.pk %}">Delete</a>
+                        </div>
+                    {% endif %}
+                </div>
+            {% endfor %}
+        </div>
+        <button class="next" onclick="moveSlide(1)">&#10095;</button>
+    </div>
+{% endblock %}

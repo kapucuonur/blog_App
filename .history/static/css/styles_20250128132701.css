@@ -1,0 +1,197 @@
+/* General styling */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    height: 100vh;
+    background: linear-gradient(135deg, #ff9a9e, #fad0c4);
+    animation: backgroundMove 5s infinite alternate;
+    box-sizing: border-box;
+}
+
+@keyframes backgroundMove {
+    from {
+        background-position: 0% 50%;
+    }
+    to {
+        background-position: 100% 50%;
+    }
+}
+
+/* Header and Navigation */
+header {
+    width: 100%;
+    background-color: #333;
+    color: white;
+    padding: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+header h1 {
+    margin: 0;
+    font-size: 2.5rem;
+}
+
+nav a {
+    color: white;
+    margin: 0 15px;
+    text-decoration: none;
+    font-size: 1.2rem;
+    transition: color 0.3s ease;
+}
+
+nav a:hover {
+    color: #ff6f61;
+}
+
+/* Welcome message styling */
+.welcome-message {
+    text-align: center;
+    margin-top: 30px;
+    color: #444;
+}
+
+.welcome-message h2 {
+    font-size: 2rem;
+    color: #333;
+}
+
+.welcome-message p {
+    font-size: 1.2rem;
+    color: #555;
+}
+
+/* Posts container */
+.posts-container {
+    display: flex;
+    justify-content: center;
+    margin-top: 30px;
+}
+
+.posts {
+    width: 70%;
+    max-width: 800px;
+}
+
+.post {
+    background-color: #fff;
+    padding: 20px;
+    margin-bottom: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+.post h4 {
+    margin: 0;
+    font-size: 1.5rem;
+    color: #333;
+}
+
+.post p {
+    font-size: 1.2rem;
+    color: #555;
+}
+
+.author {
+    font-size: 1rem;
+    color: #777;
+    margin-top: 10px;
+    font-style: italic;
+}
+
+/* Form styling */
+form {
+    background: #fff;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    width: 300px;
+    animation: slideDown 0.6s ease-in-out;
+}
+
+/* Heading inside the form */
+form h2 {
+    margin-bottom: 20px;
+    color: #444;
+    text-align: center;
+    animation: fadeIn 1s ease-in-out;
+}
+
+/* Input styling */
+form input {
+    width: 100%;
+    padding: 12px;
+    margin-bottom: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 10px;
+    box-shadow: inset 0 2px 5px rgba(0, 0, 0, 0.1);
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+form input:focus {
+    border-color: #ff6f61;
+    box-shadow: 0 0 8px rgba(255, 111, 97, 0.5);
+    outline: none;
+}
+
+/* Button styling */
+form button {
+    width: 100%;
+    padding: 12px;
+    background: #ff6f61;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 10px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background 0.3s ease, transform 0.2s ease;
+}
+
+form button:hover {
+    background: #e64c3c;
+    transform: translateY(-2px);
+}
+
+/* Link styling */
+form a {
+    display: block;
+    text-align: center;
+    margin-top: 15px;
+    text-decoration: none;
+    color: #555;
+    font-size: 14px;
+    transition: color 0.3s ease;
+}
+
+form a:hover {
+    color: #ff6f61;
+}
+
+/* Animations */
+@keyframes slideDown {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}

@@ -1,0 +1,146 @@
+/* Body styling */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background: linear-gradient(135deg, #ff9a9e, #fad0c4);
+    animation: backgroundMove 5s infinite alternate;
+    box-sizing: border-box;
+}
+nav a {
+    color: white;
+    margin: 0 15px;
+    text-decoration: none;
+    font-size: 1.2rem;
+    transition: color 0.3s ease;
+}
+
+nav a:hover {
+    color: #ff6f61;
+}
+
+/* Welcome message styling */
+.welcome-message {
+    text-align: center;
+    margin-top: 30px;
+    color: #444;
+}
+
+.welcome-message h2 {
+    font-size: 2rem;
+    color: #333;
+}
+
+.welcome-message p {
+    font-size: 1.2rem;
+    color: #555;
+}
+@keyframes backgroundMove {
+    from {
+        background-position: 0% 50%;
+    }
+    to {
+        background-position: 100% 50%;
+    }
+}
+
+/* Form styling */
+form {
+    background: #fff;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    width: 300px;
+    animation: slideDown 0.6s ease-in-out;
+}
+
+/* Heading styling inside the form */
+form h2 {
+    margin-bottom: 20px;
+    color: #444;
+    text-align: center;
+    animation: fadeIn 1s ease-in-out;
+}
+
+/* Input styling */
+form input {
+    width: 100%;
+    padding: 12px;
+    margin-bottom: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+    box-shadow: inset 0 2px 5px rgba(0, 0, 0, 0.1);
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Focus state for input */
+form input:focus {
+    border-color: #ff6f61;
+    box-shadow: 0 0 8px rgba(255, 111, 97, 0.5);
+    outline: none;
+}
+
+/* Button styling */
+form button {
+    width: 100%;
+    padding: 12px;
+    background: #ff6f61;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background 0.3s ease, transform 0.2s ease;
+}
+
+/* Button hover effect */
+form button:hover {
+    background: #e64c3c;
+    transform: translateY(-2px);
+}
+
+/* Link styling */
+form a {
+    display: block;
+    text-align: center;
+    margin-top: 15px;
+    text-decoration: none;
+    color: #555;
+    font-size: 14px;
+    transition: color 0.3s ease;
+}
+
+/* Link hover effect */
+form a:hover {
+    color: #ff6f61;
+}
+
+/* Animations */
+
+/* Slide down animation */
+@keyframes slideDown {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Fade-in animation */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
