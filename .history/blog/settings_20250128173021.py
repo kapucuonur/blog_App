@@ -1,28 +1,28 @@
-from decouple import Config
+from decouple import decouple_config
 from pathlib import Path
 import os
 
 import django_heroku
 
 BASE_DIR = Path(__file__).resolve().parent.parent
-config = Config('.env')
+decouple_config = decouple_config('.env')
 
 SECRET_KEY = os.getenv('SECRET_KEY')
 
 DEBUG = True
-ALLOWED_HOSTS = config('ALLOWED_HOSTS', default='127.0.0.1,localhost').replace(' ', '').split(',')
+ALLOWED_HOSTS = decouple_config('ALLOWED_HOSTS', default='127.0.0.1,localhost').replace(' ', '').split(',')
 
 
-# Database configuration
-DATABASE_URL = config('DATABASE_URL', default='None')
+# Database decouple_configuration
+DATABASE_URL = decouple_config('DATABASE_URL', default='None')
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': config('DB_NAME'),
-        'USER': config('DB_USER'),
-        'PASSWORD': config('DB_PASSWORD'),
-        'HOST': config('DB_HOST'),
-        'PORT': config('DB_PORT'),
+        'NAME': decouple_config('DB_NAME'),
+        'USER': decouple_config('DB_USER'),
+        'PASSWORD': decouple_config('DB_PASSWORD'),
+        'HOST': decouple_config('DB_HOST'),
+        'PORT': decouple_config('DB_PORT'),
     }
 }
 

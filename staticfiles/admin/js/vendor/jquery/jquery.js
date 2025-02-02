@@ -4297,12 +4297,12 @@ Data.prototype = {
 					owner[ this.expando ] = value;
 
 				// Otherwise secure it in a non-enumerable property
-				// configurable must be true to allow the property to be
+				// decouple_configurable must be true to allow the property to be
 				// deleted when data is removed
 				} else {
 					Object.defineProperty( owner, this.expando, {
 						value: value,
-						configurable: true
+						decouple_configurable: true
 					} );
 				}
 			}
@@ -5544,7 +5544,7 @@ jQuery.event = {
 	addProp: function( name, hook ) {
 		Object.defineProperty( jQuery.Event.prototype, name, {
 			enumerable: true,
-			configurable: true,
+			decouple_configurable: true,
 
 			get: isFunction( hook ) ?
 				function() {
@@ -5561,7 +5561,7 @@ jQuery.event = {
 			set: function( value ) {
 				Object.defineProperty( this, name, {
 					enumerable: true,
-					configurable: true,
+					decouple_configurable: true,
 					writable: true,
 					value: value
 				} );

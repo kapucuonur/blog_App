@@ -9,18 +9,18 @@ https://docs.djangoproject.com/en/4.2/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/4.2/ref/settings/
 """
-from decouple import Config
+from decouple import decouple_config
 from pathlib import Path
 import os
 
 BASE_DIR = Path(__file__).resolve().parent.parent
-config = Config('.env')
+decouple_config = decouple_config('.env')
 
 SECRET_KEY = os.getenv('SECRET_KEY')
 
-DEBUG = config('DEBUG', cast=bool)
-ALLOWED_HOSTS = config('ALLOWED_HOSTS', default='127.0.0.1,localhost').split(',')
-DATABASE_URL = config('DATABASE_URL', default='sqlite:///db.sqlite3')
+DEBUG = decouple_config('DEBUG', cast=bool)
+ALLOWED_HOSTS = decouple_config('ALLOWED_HOSTS', default='127.0.0.1,localhost').split(',')
+DATABASE_URL = decouple_config('DATABASE_URL', default='sqlite:///db.sqlite3')
 
 ALLOWED_HOSTS = []
 
