@@ -14,11 +14,7 @@ print("ALLOWED_HOSTS:", config('ALLOWED_HOSTS'))
 SECRET_KEY = config('SECRET_KEY')
 
 DEBUG = True
-ALLOWED_HOSTS = config(
-    'ALLOWED_HOSTS',
-    default='127.0.0.1,localhost,blog-app-sgrt.onrender.com'
-).replace(' ', '').split(',')
-
+ALLOWED_HOSTS = config('ALLOWED_HOSTS', default='127.0.0.1,localhost', 'blog-app-sgrt.onrender.com').replace(' ', '').split(',')
 
 # Database configuration
 DATABASE_URL = config('DATABASE_URL')

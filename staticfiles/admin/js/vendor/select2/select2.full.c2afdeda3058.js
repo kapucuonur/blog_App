@@ -32,7 +32,7 @@
     factory(jQuery);
   }
 } (function (jQuery) {
-  // This is needed so we can catch the AMD loader decouple_configuration and use it
+  // This is needed so we can catch the AMD loader configuration and use it
   // The inner file should be wrapped (by `banner.start.js`) in a function that
   // returns the AMD loader references.
   var S2 =(function () {
@@ -56,7 +56,7 @@ var requirejs, require, define;
     var main, req, makeMap, handlers,
         defined = {},
         waiting = {},
-        decouple_config = {},
+        config = {},
         defining = {},
         hasOwn = Object.prototype.hasOwnProperty,
         aps = [].slice,
@@ -78,7 +78,7 @@ var requirejs, require, define;
         var nameParts, nameSegment, mapValue, foundMap, lastIndex,
             foundI, foundStarMap, starI, i, j, part, normalizedBaseParts,
             baseParts = baseName && baseName.split("/"),
-            map = decouple_config.map,
+            map = config.map,
             starMap = (map && map['*']) || {};
 
         //Adjust any relative paths.
@@ -90,7 +90,7 @@ var requirejs, require, define;
             // of IDs. Have to do this here, and not in nameToUrl
             // because node allows either .js or non .js to map
             // to same file.
-            if (decouple_config.nodeIdCompat && jsSuffixRegExp.test(name[lastIndex])) {
+            if (config.nodeIdCompat && jsSuffixRegExp.test(name[lastIndex])) {
                 name[lastIndex] = name[lastIndex].replace(jsSuffixRegExp, '');
             }
 
@@ -130,7 +130,7 @@ var requirejs, require, define;
             name = name.join('/');
         }
 
-        //Apply map decouple_config if available.
+        //Apply map config if available.
         if ((baseParts || starMap) && map) {
             nameParts = name.split('/');
 
@@ -138,12 +138,12 @@ var requirejs, require, define;
                 nameSegment = nameParts.slice(0, i).join("/");
 
                 if (baseParts) {
-                    //Find the longest baseName segment match in the decouple_config.
+                    //Find the longest baseName segment match in the config.
                     //So, do joins on the biggest to smallest lengths of baseParts.
                     for (j = baseParts.length; j > 0; j -= 1) {
                         mapValue = map[baseParts.slice(0, j).join('/')];
 
-                        //baseName segment has  decouple_config, find if it has one for
+                        //baseName segment has  config, find if it has one for
                         //this name.
                         if (mapValue) {
                             mapValue = mapValue[nameSegment];
@@ -163,7 +163,7 @@ var requirejs, require, define;
 
                 //Check for a star map match, but just hold on to it,
                 //if there is a shorter segment match later in a matching
-                //decouple_config, then favor over this star map.
+                //config, then favor over this star map.
                 if (!foundStarMap && starMap && starMap[nameSegment]) {
                     foundStarMap = starMap[nameSegment];
                     starI = i;
@@ -290,9 +290,9 @@ var requirejs, require, define;
         };
     };
 
-    function makedecouple_config(name) {
+    function makeConfig(name) {
         return function () {
-            return (decouple_config && decouple_config.decouple_config && decouple_config.decouple_config[name]) || {};
+            return (config && config.config && config.config[name]) || {};
         };
     }
 
@@ -313,7 +313,7 @@ var requirejs, require, define;
                 id: name,
                 uri: '',
                 exports: defined[name],
-                decouple_config: makedecouple_config(name)
+                config: makeConfig(name)
             };
         }
     };
@@ -393,10 +393,10 @@ var requirejs, require, define;
             //Normalize module name, if it contains . or ..
             return callDep(makeMap(deps, makeRelParts(callback)).f);
         } else if (!deps.splice) {
-            //deps is a decouple_config object, not an array.
-            decouple_config = deps;
-            if (decouple_config.deps) {
-                req(decouple_config.deps, decouple_config.callback);
+            //deps is a config object, not an array.
+            config = deps;
+            if (config.deps) {
+                req(config.deps, config.callback);
             }
             if (!callback) {
                 return;
@@ -442,10 +442,10 @@ var requirejs, require, define;
     };
 
     /**
-     * Just drops the decouple_config on the floor, but returns req in case
-     * the decouple_config return value is used.
+     * Just drops the config on the floor, but returns req in case
+     * the config return value is used.
      */
-    req.decouple_config = function (cfg) {
+    req.config = function (cfg) {
         return req(cfg);
     };
 
@@ -5175,7 +5175,7 @@ S2.define('select2/defaults',[
             languageData = Translation.loadPath(language);
           } catch (ex) {
             // The translation could not be loaded at all. Sometimes this is
-            // because of a decouple_configuration problem, other times this can be
+            // because of a configuration problem, other times this can be
             // because of how Select2 helps load all possible translation files
             if (debug && window.console && console.warn) {
               console.warn(
@@ -6799,7 +6799,7 @@ S2.define('jquery.select2',[
   return Select2;
 });
 
-  // Return the AMD loader decouple_configuration so it can be used outside of this file
+  // Return the AMD loader configuration so it can be used outside of this file
   return {
     define: S2.define,
     require: S2.require
